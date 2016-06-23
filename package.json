@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "webpack --watch & nodemon server.js",
+    "start:windows": "node ./node_modules/concurrently/src/main.js --kill-others \"webpack --watch\" \"nodemon server.js\"",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
@@ -29,6 +30,7 @@
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.1.0",
+    "concurrently": "^2.1.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
