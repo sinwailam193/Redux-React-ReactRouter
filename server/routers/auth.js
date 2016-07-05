@@ -1,6 +1,27 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jwt-simple");
+const passport = require("passport");
+const passportService = require("../services/passport");
 const User = require("../models/user");
+const config = require("../config");
+
+const requireAuth = passport.authenticate("jwt", {session: false});
+const requireLogin = passport.authenticate("local", {session: false});
+
+// Generating a token with JWT for user
+function tokenForUser(user) {
+  // For JWT, it has a "sub" property, subject, of who this token is about
+  // iat stands for "issue at", the time that this token is created
+  const timestamp = new Date().getTime();
+  return jwt.encode({sub: user.id, iat: timestamp}, config.secret);
+}
+
+router.get("/", requireAuth, (req, res) => {
+  res.send({
+    response: "valid user"
+  });
+});
 
 router.post("/signup", (req, res, next) => {
   const email = req.body.email;
@@ -34,9 +55,18 @@ router.post("/signup", (req, res, next) => {
       }
       // Respond to request indiciating the user was created
       res.send({
-        success: true
+        token: tokenForUser(user)
       });
     });
+  });
+});
+
+router.post("/login", requireLogin, (req, res, next) => {
+  // User already has their email and password auth'd
+  // we just need to give them a token
+  // Thanks to passport, we get a req.user from the user loging in
+  res.send({
+    token: tokenForUser(req.user)
   });
 });
 
