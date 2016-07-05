@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jwt-simple");
 const passport = require("passport");
-const passportService = require("../services/passport");
 const User = require("../models/user");
 const config = require("../config");
 
