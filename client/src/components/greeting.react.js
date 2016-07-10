@@ -1,26 +1,13 @@
-import React, {  Component, PropTypes } from 'react';
+import React, { Component } from "react";
 
 export default class Greeting extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  static contextTypes = {
-    // you should only use context when you are doing something with react-router and routing
-    router: PropTypes.object
-  };
-
-  _handleClick = () => {
-    this.context.router.push('/');
-  }
-  
-  render(){
+  render() {
     return (
-      <div>
-        this is greeting
-        <button onClick={this._handleClick}>Submit</button>
-      </div>
+      <h1 className="greeting">Greeting!</h1>
     );
   }
 }

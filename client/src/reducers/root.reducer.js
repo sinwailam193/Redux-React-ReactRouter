@@ -1,10 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-function test(){
-  return {book: 1};
-}
 const rootReducer = combineReducers({
-  list: test
+  form: () => "hello"
 });
 
 export default rootReducer;
