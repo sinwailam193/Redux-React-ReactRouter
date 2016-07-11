@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actions from "../../actions/auth/auth.action";
 
 class Signin extends Component {
 
@@ -22,7 +23,7 @@ class Signin extends Component {
   _handleSubmit(event) {
     event.preventDefault();
     const {email, password} = this.state;
-    
+    this.props.signinUser({email, password});
   }
 
   render() {
@@ -44,4 +45,4 @@ class Signin extends Component {
   }
 }
 
-export default connect(null)(Signin);
+export default connect(null, actions)(Signin);

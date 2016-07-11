@@ -18,7 +18,7 @@ function tokenForUser(user) {
 
 router.get("/", requireAuth, (req, res) => {
   res.send({
-    response: "valid user"
+    response: "Super secret code is ABC123"
   });
 });
 
