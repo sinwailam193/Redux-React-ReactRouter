@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
+import authReducer from "./auth.reducer";
 
 const rootReducer = combineReducers({
-  form: () => "hello"
+  auth: authReducer
 });
 
 export default rootReducer;
