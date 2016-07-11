@@ -1,4 +1,5 @@
-import React, {  Component, PropTypes } from 'react';
+import React, {  Component, PropTypes } from "react";
+import { browserHistory } from "react-router";
 
 export default class Greeting extends Component {
 
@@ -6,15 +7,10 @@ export default class Greeting extends Component {
     super(props);
   }
 
-  static contextTypes = {
-    // you should only use context when you are doing something with react-router and routing
-    router: PropTypes.object
-  };
-
   _handleClick = () => {
-    this.context.router.push('/');
+    browserHistory.push("/");
   }
-  
+
   render(){
     return (
       <div>
