@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
+import fetchReducer from "./sample.reducer";
 
-function test(){
-  return {book: 1};
-}
 const rootReducer = combineReducers({
-  list: test
+  sample: fetchReducer
 });
 
 export default rootReducer;
