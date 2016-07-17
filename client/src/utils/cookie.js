@@ -5,7 +5,7 @@ export function set_cookie (cookie_name, cookie_value, lifespan_in_days, valid_d
 
 export function get_cookie (cookie_name) {
   var name = cookie_name + "=";
-  var arr = string.split(";");
+  var arr = document.cookie.split(";");
   for(let i = 0; i < arr.length; i++) {
       let current = arr[i];
       while(current.charAt(0) === ' ') {

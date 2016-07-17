@@ -12,6 +12,7 @@ class Signin extends Component {
     };
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleChange = this._handleChange.bind(this);
+    this._renderErrorMessage = this._renderErrorMessage.bind(this);
   }
 
   _handleChange(event) {
@@ -24,6 +25,16 @@ class Signin extends Component {
     event.preventDefault();
     const {email, password} = this.state;
     this.props.signinUser({email, password});
+  }
+
+  _renderErrorMessage() {
+    if(this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
   }
 
   render() {
@@ -39,10 +50,17 @@ class Signin extends Component {
           <label>Password:</label>
           <input type="password" className="form-control" name="password" value={password} onChange={this._handleChange} />
         </fieldset>
+        {this._renderErrorMessage()}
         <button action="submit" className="btn btn-primary">Sign in</button>
       </form>
     );
   }
 }
 
-export default connect(null, actions)(Signin);
+function mapStateToProps(state) {
+  return {
+    errorMessage: state.auth.error
+  };
+}
+
+export default connect(mapStateToProps, actions)(Signin);
