@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { browserHistory } from "react-router";
 
-export default function RequireAuth(Component) {
+export default function RequireAuth(ChildComponent) {
   class Authentication extends Component {
     constructor(props) {
       super(props);
@@ -21,7 +21,7 @@ export default function RequireAuth(Component) {
     }
 
     render() {
-      return <Component {...this.props} />
+      return <ChildComponent {...this.props} />
     }
   }
 
