@@ -6,11 +6,20 @@ import { createStore, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 import Routes from "./routes";
 import Reducers from "./reducers/root.reducer";
+import { get_cookie } from "./utils/cookie";
+import { authUser } from "./actions/auth/auth.action";
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
+const store = createStoreWithMiddleware(Reducers);
+const token = get_cookie("authtoken");
+
+if(token) {
+  // This means that the user is logged in and we're going to update the state
+  store.dispatch(authUser());
+}
 
 render(
-  <Provider store={createStoreWithMiddleware(Reducers)}>
+  <Provider store={store}>
     <Router history={browserHistory} routes={Routes} />
   </Provider>,
   document.getElementById('container')

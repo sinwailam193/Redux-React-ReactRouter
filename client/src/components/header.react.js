@@ -1,19 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
-import { get_cookie } from "../utils/cookie";
-import { authUser } from "../actions/auth/auth.action";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this._renderLinks = this._renderLinks.bind(this);
-  }
-
-  componentDidMount() {
-    if(get_cookie("authtoken")) {
-      this.props.authUser();
-    }
   }
 
   _renderLinks() {
@@ -52,4 +44,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {authUser})(Header);
+export default connect(mapStateToProps)(Header);
