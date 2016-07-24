@@ -2,6 +2,7 @@ import React, {  Component, PropTypes } from "react";
 import { browserHistory } from "react-router";
 import { connect } from "react-redux";
 import * as actions from "../actions/sample.action";
+import Children from "./children.react";
 
 class Greeting extends Component {
 
@@ -18,7 +19,8 @@ class Greeting extends Component {
     return (
       <div>
         this is greeting
-        <button onClick={this._handleClick}>Submit</button>
+        <button onClick={this._handleClick}>{this.props.message}</button>
+        <Children>This is child</Children>
       </div>
     );
   }
