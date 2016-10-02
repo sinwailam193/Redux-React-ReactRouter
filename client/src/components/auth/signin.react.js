@@ -13,12 +13,19 @@ class Signin extends Component {
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleChange = this._handleChange.bind(this);
     this._renderErrorMessage = this._renderErrorMessage.bind(this);
+    this._handleReduxChange = this._handleReduxChange.bind(this);
   }
 
   _handleChange(event) {
     let obj = {};
     obj[event.target.name] = event.target.value;
     this.setState(obj);
+  }
+
+  _handleReduxChange(event) {
+    let obj = {};
+    obj[event.target.name] = event.target.value;
+    this.props.handleChange(obj);
   }
 
   _handleSubmit(event) {
@@ -28,23 +35,23 @@ class Signin extends Component {
   }
 
   _renderErrorMessage() {
-    if(this.props.errorMessage) {
+    if(this.props.auth.error) {
       return (
         <div className="alert alert-danger">
-          <strong>Oops!</strong> {this.props.errorMessage}
+          <strong>Oops!</strong> {this.props.auth.error}
         </div>
       );
     }
   }
 
   render() {
-    const {email, password} = this.state;
+    const {password} = this.state;
 
     return (
       <form onSubmit={this._handleSubmit} className="signin">
         <fieldset className="form-group">
           <label>Email:</label>
-          <input type="text" className="form-control" name="email" value={email} onChange={this._handleChange} />
+          <input type="text" className="form-control" name="email" value={this.props.auth.email} onChange={this._handleReduxChange} />
         </fieldset>
         <fieldset className="form-group">
           <label>Password:</label>
@@ -59,7 +66,7 @@ class Signin extends Component {
 
 function mapStateToProps(state) {
   return {
-    errorMessage: state.auth.error
+    auth: state.auth
   };
 }
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { browserHistory } from "react-router";
-import { ROOT_URL, AUTH_USER, AUTH_ERROR, UNAUTH_USER, AUTH_EMAIL_ERROR } from "../constants";
+import { ROOT_URL, AUTH_USER, AUTH_ERROR, UNAUTH_USER, AUTH_EMAIL_ERROR, HANDLE_CHANGE } from "../constants";
 import { set_cookie, get_cookie, delete_cookie } from "../../utils/cookie";
 
 export function authUser() {
@@ -20,6 +20,13 @@ export function authErrorEmail(error) {
   return {
     type: AUTH_EMAIL_ERROR,
     error
+  };
+}
+
+export function handleChange(value) {
+  return {
+    type: HANDLE_CHANGE,
+    value
   };
 }
 
