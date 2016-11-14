@@ -10,7 +10,7 @@ function Greeting1() {
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Greeting1} />
-    <Route path="/greet" component={Greeting} />
+    <IndexRoute component={Greeting} />
+    <Route path="/greet" component={Greeting1} />
   </Route>
 );
