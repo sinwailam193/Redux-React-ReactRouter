@@ -9,7 +9,7 @@ import Reducers from "./reducers/root.reducer";
 import { get_cookie } from "./utils/cookie";
 import { authUser } from "./actions/auth/auth.action";
 
-const store = createStore(Reducers, applyMiddleware(ReduxThunk))
+const store = applyMiddleware(ReduxThunk)(createStore)(Reducers);
 const token = get_cookie("authtoken");
 
 if(token) {
