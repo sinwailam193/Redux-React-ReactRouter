@@ -7,10 +7,10 @@ import ReduxThunk from 'redux-thunk';
 import Routes from './routes';
 import Reducers from './reducers/root.reducer';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
+const store = applyMiddleware(ReduxThunk)(createStore)(Reducers);
 
 render(
-  <Provider store={createStoreWithMiddleware(Reducers)}>
+  <Provider store={store}>
     <Router history={browserHistory} routes={Routes} />
   </Provider>,
   document.getElementById('container'));

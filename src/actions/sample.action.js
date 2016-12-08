@@ -2,9 +2,10 @@ import axios from "axios";
 import { FETCH } from "./constants";
 
 export function fetch() {
-  return function(dispatch) {
-    axios.get("/api/sample")
+  return async function(dispatch) {
+    await axios.get("/api/sample")
       .then(response => {
+        console.log("first");
         dispatch({type: FETCH, message: response.data.data});
       })
       .catch(error => {

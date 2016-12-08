@@ -8,11 +8,13 @@ class Greeting extends Component {
 
   constructor(props){
     super(props);
+    this._handleClick = this._handleClick.bind(this);
   }
 
-  _handleClick = () => {
+  async _handleClick() {
+    await this.props.fetch();
+    console.log("second");
     // browserHistory.push("/");
-    this.props.fetch();
   }
 
   render(){
