@@ -2,7 +2,7 @@ import axios from "axios";
 import { FETCH } from "./constants";
 
 export function fetch() {
-  return async function(dispatch) {
+  return async dispatch => {
     await axios.get("/api/sample")
       .then(response => {
         console.log("first");
