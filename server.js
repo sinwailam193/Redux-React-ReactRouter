@@ -14,7 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(__dirname + "/public"));
-app.use('/api', routes);
+app.use("/api", routes);
+app.use("/scripts", express.static(path.join(__dirname, "node_modules/bootstrap/dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });

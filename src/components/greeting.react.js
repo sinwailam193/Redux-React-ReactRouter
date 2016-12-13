@@ -21,7 +21,7 @@ class Greeting extends Component {
     return (
       <div>
         this is greeting
-        <button onClick={this._handleClick}>{this.props.message}</button>
+        <button className="btn btn-danger" onClick={this._handleClick}>{this.props.message}</button>
         <Children>This is child</Children>
       </div>
     );
