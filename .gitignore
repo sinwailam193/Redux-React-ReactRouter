@@ -5,3 +5,4 @@ client
 .DS_Store
 npm-debug.log
 */**/config.js
+/public/vendor.js
