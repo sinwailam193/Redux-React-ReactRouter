@@ -1,8 +1,8 @@
-const debug = process.env.NODE_ENV === "production";
+const prod = process.env.NODE_ENV === "production";
 const webpack = require("webpack");
 
 module.exports = {
-  entry: debug ? ["./src/index.js",] : {
+  entry: {
     app: "./src/index.js",
     vendor: ["babel-polyfill", "react", "react-dom", "react-router", "redux", "redux-thunk", "react-redux", "axios"]
   },
@@ -11,12 +11,19 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devtool: debug ? "inline-sourcemap" : null,
-  plugins: debug ? [] : [
+  devtool: prod ? null : "inline-sourcemap",
+  plugins: prod ? [
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("production")
+      }
+    }),
     new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js"),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })] :
+  [
+    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js")
   ],
   module: {
     loaders: [{
