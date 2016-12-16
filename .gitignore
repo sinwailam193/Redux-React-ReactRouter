@@ -1,6 +1,7 @@
 */**/node_modules
 node_modules
 */**/bundle.js
+*/**/vendor.js
 */**/.DS_Store
 */**/npm-debug.log
 server/config.js
