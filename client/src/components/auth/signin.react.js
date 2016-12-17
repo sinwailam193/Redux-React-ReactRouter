@@ -30,8 +30,8 @@ class Signin extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    const {email, password} = this.state;
-    this.props.signUser({email, password}, "login");
+    const {password} = this.state;
+    this.props.signUser({email: this.props.auth.email, password}, "login");
   }
 
   _renderErrorMessage() {
