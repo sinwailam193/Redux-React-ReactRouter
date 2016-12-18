@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import * as actions from "../actions/sample.action";
 import Children from "./children.react";
 
+require("../../style/style.scss");
+
 class Greeting extends Component {
 
   constructor(props){
@@ -19,7 +21,7 @@ class Greeting extends Component {
 
   render(){
     return (
-      <div>
+      <div className="err">
         this is greeting
         <button className="btn btn-danger" onClick={this._handleClick}>{this.props.message}</button>
         <Children>This is child</Children>
