@@ -15,7 +15,6 @@ app.use(cookieParser());
 
 app.use(express.static(__dirname + "/public"));
 app.use("/api", routes);
-app.use("/bootstrap", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css/bootstrap.min.css")));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
