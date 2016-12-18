@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import * as actions from "../actions/sample.action";
 import Children from "./children.react";
 
-require("../../style/style.scss");
-
 class Greeting extends Component {
 
   constructor(props){
