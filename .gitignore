@@ -6,3 +6,4 @@ client
 npm-debug.log
 */**/config.js
 /public/vendor.js
+/public/lib

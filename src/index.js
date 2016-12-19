@@ -6,6 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import Routes from './routes';
 import Reducers from './reducers/root.reducer';
+require("./utils");
 
 const store = applyMiddleware(ReduxThunk)(createStore)(Reducers);
 

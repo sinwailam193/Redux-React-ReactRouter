@@ -19,9 +19,19 @@ class Greeting extends Component {
 
   render(){
     return (
-      <div className="err">
+      <div>
         this is greeting
-        <button className="btn btn-danger" onClick={this._handleClick}>{this.props.message}</button>
+        <a
+          href="#"
+          role="button"
+          className="btn btn-danger"
+          data-trigger="focus"
+          data-toggle="popover"
+          data-placement="right"
+          data-content="this is popover"
+          onClick={this._handleClick}>
+          hello world
+        </a>
         <Children>This is child</Children>
       </div>
     );
