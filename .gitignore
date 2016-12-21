@@ -4,5 +4,6 @@ node_modules
 */**/vendor.js
 */**/.DS_Store
 */**/npm-debug.log
+server/prod
 server/config.js
 .DS_Store

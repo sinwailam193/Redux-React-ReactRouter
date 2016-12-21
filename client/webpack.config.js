@@ -11,7 +11,7 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devtool: prod ? null : "inline-sourcemap",
+  devtool: prod ? null : "#inline-source-map",
   plugins: prod ? [
     new webpack.DefinePlugin({
       "process.env": {
@@ -27,6 +27,7 @@ module.exports = {
   ],
   module: {
     loaders: [{
+      test: /\.(js|jsx)$/,
       exclude: /node_modules/,
       loader: 'babel'
     }]

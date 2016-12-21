@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "webpack --watch & nodemon server.js",
-    "postinstall": "NODE_ENV='production' webpack",
+    "postinstall": "NODE_ENV='production' webpack -p",
     "start": "node server.js"
   },
   "author": "",
