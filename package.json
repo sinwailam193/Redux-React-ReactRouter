@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --watch & nodemon server.js",
     "postinstall": "NODE_ENV='production' webpack -p",
-    "start": "node server.js"
+    "start": "NODE_ENV='production' node server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.26.1",
+    "redux-devtools-extension": "^1.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1"
   },
