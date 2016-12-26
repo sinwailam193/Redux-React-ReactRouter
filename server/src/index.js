@@ -8,9 +8,9 @@ import router from "./router";
 
 const port = process.env.PORT || 3000;
 const app = express();
-const environment = app.get("env");
+const env = app.get("env");
 
-if (environment === "production") {
+if (env === "production") {
   app.use(morgan("common", {
     skip: (req, res) => res.statusCode < 400,
     stream: fs.createWriteStream(
@@ -27,4 +27,4 @@ app.use("/", router);
 
 const server = createServer(app);
 server.listen(port);
-console.log(`Server listening on http://localhost:${3000}`);
+console.log(`Server listening on http://localhost:${port}`);
