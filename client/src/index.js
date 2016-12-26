@@ -3,13 +3,14 @@ import { render } from "react-dom";
 import { Router, browserHistory } from "react-router";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import ReduxThunk from "redux-thunk";
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import thunk from "redux-thunk";
 import Routes from "./routes";
 import Reducers from "./reducers/root.reducer";
 import { get_cookie } from "./utils/cookie";
 import { authUser } from "./actions/auth/auth.action";
 
-const store = applyMiddleware(ReduxThunk)(createStore)(Reducers);
+const store = createStore(Reducers, composeWithDevTools(applyMiddleware(thunk)));
 const token = get_cookie("authtoken");
 
 if(token) {
