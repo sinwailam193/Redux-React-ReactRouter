@@ -5,31 +5,28 @@ import * as actions from "../actions/sample.action";
 import Children from "./children.react";
 
 class Greeting extends Component {
-
-  constructor(props){
-    super(props);
-    this._handleClick = this._handleClick.bind(this);
-  }
-
-  async _handleClick() {
+  handleClick = async (event) => {
     await this.props.fetch();
     console.log("second");
     // browserHistory.push("/");
   }
 
   render(){
+    const { handleClick } = this;
+
     return (
       <div>
         this is greeting
         <a
-          href="#"
+          href=""
           role="button"
+          name="popover"
           className="btn btn-danger"
           data-trigger="focus"
           data-toggle="popover"
           data-placement="right"
           data-content="this is popover"
-          onClick={this._handleClick}>
+          onClick={handleClick}>
           hello world
         </a>
         <Children>This is child</Children>

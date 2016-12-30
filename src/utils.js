@@ -1,3 +1,4 @@
 $(() => {
-  $('[data-toggle="popover"]').popover();
+  $("a").click(event => event.preventDefault());
+  $("[data-toggle='popover']").popover();
 });
