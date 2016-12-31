@@ -39,7 +39,6 @@
     "jquery": "^3.1.1",
     "lodash": "^3.10.1",
     "morgan": "^1.7.0",
-    "nodemon": "^1.9.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.0",

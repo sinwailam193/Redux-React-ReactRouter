@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import ReduxThunk from 'redux-thunk';
 import Routes from './routes';
 import Reducers from './reducers/root.reducer';
-require("./utils");
+require("./utils")
 
 const store = createStore(Reducers, composeWithDevTools(applyMiddleware(ReduxThunk)));
 
