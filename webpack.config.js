@@ -1,4 +1,5 @@
 const prod = process.env.NODE_ENV === "production";
+const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
@@ -7,9 +8,9 @@ module.exports = {
     vendor: ["babel-polyfill", "react", "react-dom", "react-router", "redux", "redux-thunk", "react-redux", "axios"]
   },
   output: {
-    path: __dirname + "/public",
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.join(__dirname, "/public"),
+    publicPath: "/",
+    filename: "bundle.js"
   },
   devtool: prod ? null : "#inline-source-map",
   plugins: prod ? [
@@ -30,19 +31,16 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: "babel"
       },
       {
         test: /\.css$/,
         loader: "style!css"
+      },
+      {
+        test: /\.jpg$/,
+        loader: "file?name=img/[hash].[ext]"
       }
     ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
   }
 };
