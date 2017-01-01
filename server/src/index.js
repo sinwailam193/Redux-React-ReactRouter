@@ -2,7 +2,6 @@ import express from "express";
 import { join } from "path";
 import { createWriteStream } from "fs";
 import morgan from "morgan";
-import { createServer } from "http";
 import { json } from "body-parser";
 import router from "./router";
 
@@ -25,6 +24,5 @@ if (env === "production") {
 app.use(json({ type: "*/*" }));
 app.use("/", router);
 
-const server = createServer(app);
-server.listen(port);
+app.listen(port);
 console.log(`Server listening on http://localhost:${port}`);

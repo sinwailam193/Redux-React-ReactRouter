@@ -2,7 +2,8 @@
   "extends": "rallycoding",
   "rules": {
     "quotes": [2, "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
-    "space-before-function-paren": 0,
-    "arrow-body-style": 0
+    "space-before-function-paren": ["error", { "anonymous": "always", "named": "never" }],
+    "arrow-body-style": ["error", "as-needed"],
+    "import/no-extraneous-dependencies": 0
   }
 }
