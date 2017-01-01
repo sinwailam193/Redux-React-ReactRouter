@@ -3,11 +3,15 @@ import { join } from "path";
 import { createWriteStream } from "fs";
 import morgan from "morgan";
 import { json } from "body-parser";
+import mongoose from "mongoose";
 import router from "./router";
 
 const port = process.env.PORT || 3000;
 const app = express();
 const env = app.get("env");
+
+// Connecting to MongoDB
+mongoose.connect("mongodb://localhost:auth/auth");
 
 if (env === "production") {
   app.use(morgan("common", {

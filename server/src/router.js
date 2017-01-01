@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { auth } from "./routers";
+import { auth } from "./controllers";
 // require("./services/passport");
 
 const router = Router();
