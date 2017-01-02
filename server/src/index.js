@@ -15,15 +15,15 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:auth/auth");
 
 if (env === "production") {
-  app.use(morgan("common", {
-    skip: (req, res) => res.statusCode < 400,
-    stream: createWriteStream(
-      join(__dirname.slice(0, __dirname.indexOf("prod")), "morgan.log"),
-      { flags: "a" }
-    )
-  }));
+    app.use(morgan("common", {
+        skip: (req, res) => res.statusCode < 400,
+        stream: createWriteStream(
+            join(__dirname.slice(0, __dirname.indexOf("prod")), "morgan.log"),
+            { flags: "a" }
+        )
+    }));
 } else {
-  app.use(morgan("dev"));
+    app.use(morgan("dev"));
 }
 
 app.use(json({ type: "*/*" }));
