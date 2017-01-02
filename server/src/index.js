@@ -10,7 +10,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 const env = app.get("env");
 
-// Connecting to MongoDB
+// Setting up mongoose promise and connecting to MongoDB
+mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:auth/auth");
 
 if (env === "production") {

@@ -5,5 +5,5 @@ node_modules
 */**/.DS_Store
 */**/npm-debug.log
 server/prod
-server/config.js
+*/**/config.js
 .DS_Store
