@@ -1,10 +1,13 @@
 import { Router } from "express";
+import passport from "passport";
 import { userModel } from "../models";
 import { tokenForUser } from "../services/utils";
 
+const requireAuth = passport.authenticate("jwt", { session: false });
+const requireSignin = passport.authenticate("local", { session: false });
 export const auth = Router();
 
-auth.get("/", (req, res) => {
+auth.get("/", requireAuth, (req, res) => {
   res.send("hello world");
 });
 
@@ -29,6 +32,6 @@ auth.post("/signup", async (req, res) => {
   res.send({ token: tokenForUser(user) });
 });
 
-auth.post("/signin", async (req, res) => {
-  res.send("signing in");
+auth.post("/signin", requireSignin, async (req, res) => {
+  res.send({ token: tokenForUser(req.user) });
 });

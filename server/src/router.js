@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { auth } from "./controllers";
-// require("./services/passport");
+
+require("./services/passport");
 
 const router = Router();
 
